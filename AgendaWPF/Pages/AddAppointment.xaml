@@ -1,0 +1,35 @@
+﻿<Page x:Class="AgendaWPF.Models.AddAppointment"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AgendaWPF.Models"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddAppointment">
+
+    <StackPanel>
+        <TextBlock>Créer un nouveau rendez-vous :</TextBlock>
+
+        <Label Name="DateHour" Grid.Column="0" Grid.Row="0">Date</Label>
+        <TextBox Name="DateHourText" Text="{Binding appointment.DateHour}" Grid.Column="1" Grid.Row="0"></TextBox>
+
+        <Label Name="Subject" Grid.Column="0" Grid.Row="1">Sujet</Label>
+        <TextBox Name="SubjectText" Text="{Binding appointment.Subject}" Grid.Column="1" Grid.Row="1"></TextBox>
+
+        <Label Name="IdCustomersNavigation" Grid.Column="0" Grid.Row="2">Client</Label>
+        <ComboBox ItemsSource="{Binding Path=customers}"
+                      DisplayMemberPath="Fullname"
+                      SelectedValuePath="Id"
+                      SelectedValue="{Binding appointment.IdCustomers}" />
+
+        <Label Name="IdBrokersNavigation" Grid.Column="0" Grid.Row="3">Courtier</Label>
+        <ComboBox ItemsSource="{Binding Path=brokers}"
+                      DisplayMemberPath="Fullname"
+                      SelectedValuePath="Id"
+                      SelectedValue="{Binding appointment.IdBrokers}" />
+
+            <Button Click="Button_Add">Ajouter</Button>
+
+    </StackPanel>
+</Page>
